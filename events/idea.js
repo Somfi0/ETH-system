@@ -12,7 +12,7 @@ client.on('message', async (message) =>{
         .setTitle(`${message.author.username} нужна помощь`)
         .setColor("#343638")
         .setDescription(`${message.author} хочет:\n ${message.content}`)
-        .addField(`Оцените наданную помощь вам модерацией ETHERUM`, `Где:\n👍- Отлично\n\n👎- Ужасно`)
+        .addField(`Оцените наданную помощь вам модерацей ETHERUM`, `Где:\n👍- Отлично\n\n👎- Ужасно`)
         .setThumbnail(message.author.avatarURL())
         .setTimestamp()
         const msg = await message.channel.send(ideaembed)
