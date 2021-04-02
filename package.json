@@ -1,0 +1,17 @@
+{
+  "name": "ethsystem",
+  "version": "1.0.0",
+  "description": "Это бот для моего сервера",
+  "main": "ETH-system.js",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "discord.js": "^12.5.1",
+    "mongoose": "^5.11.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Somfi",
+  "license": "ISC"
+}
