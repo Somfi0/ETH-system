@@ -1,5 +1,5 @@
 const Discord = module.require('discord.js');
-const licked = require('./lick.json')
+const licked = require('../jsons/lick.json')
 
 module.exports = {
     name: "lick",
@@ -8,19 +8,14 @@ module.exports = {
    
         var member= message.mentions.members.first();
         const pics = licked[Math.floor(Math.random() * licked.length)];
-        let lickEmbed = new Discord.MessageEmbed()
-        .setColor('#343638')
-        .setDescription(`${message.author} обнял всех`)
-        .setTitle('Реакция обнимашки:')
-        .setImage(pics)
-        if(!member) return message.channel.send(lickEmbed)
+        if(!member) return message.channel.send(`${message.author} вы не можете облизать всех некоторые будут против этого`)
         let lickEmbed2 = new Discord.MessageEmbed()
           .setDescription(`${message.author} самолюбие не лучшая твоя черта`)
           .setColor("#343638")
             if(member.id === message.author.id) return message.channel.send(lickEmbed2);
          let lickEmbed3 = new Discord.MessageEmbed()
-          .setTitle('Реакция обнимашки:')
-          .setDescription(`**${message.author} обнял(-а) ${member.user}**`)
+          .setTitle('Реакция облизал:')
+          .setDescription(`**${message.author} облизал(-а) ${member.user}**`)
           .setImage(pics)
           .setColor('#343638')
          return message.channel.send(lickEmbed3);
