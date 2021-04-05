@@ -1,17 +1,18 @@
-const db = require('../../models/wans')
+const db = require('../../models/wans');
 const { Message, MessageEmbed } = require('discord.js')
 
-module.exports = {
-    name :'warn',
-    /**
-     * @param {Message} message
-     */
-    run : async(client, message, args) => {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You do not have permissions to use this command.')
+module.exports ={
+    name : 'warn',
+    run : async(client, message, args)=>{
+        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send(`${message.author} У вас не достаточно прав`)
+
         const user = message.mentions.members.first() || message.guild.members.cache.get(args[0])
-        if(!user) return message.channel.send('User not found.')
+        if(!user) return message.channel.send(`${message.author} вы не выбрали пользователя для этой команды`)
+
         const reason = args.slice(1).join(" ")
-        db.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
+        if(!reason) return message.channel.send(`${message.author} вы не указали причину`)
+
+        db.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) =>{
             if(err) throw err;
             if(!data) {
                 data = new db({
@@ -19,26 +20,23 @@ module.exports = {
                     user : user.user.id,
                     content : [
                         {
-                            moderator : message.author.id,
-                            reason : reason
+                        moderator : message.author.id,
+                        reason : reason
                         }
                     ]
                 })
-            } else {
+            }else {
                 const obj = {
-                    moderator: message.author.id,
+                    moderator : message.author.id,
                     reason : reason
                 }
                 data.content.push(obj)
             }
             data.save()
         });
-        user.send(new MessageEmbed()
-            .setDescription(`You have been warned for ${reason}`)
-            .setColor("RED")
-        )
         message.channel.send(new MessageEmbed()
-            .setDescription(`Warned ${user} for ${reason}`).setColor('BLUE')
+            .setDescription(`${user} получил предупреждение\n По причине: ${reason}`)
+            .setColor("#343638")
         )
     }
 }

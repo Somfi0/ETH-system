@@ -10,7 +10,7 @@ module.exports ={
      */
 
         run : async(client, message, args)=>{
-            if(!message.member.permissions.has("KICK_MEMBERS")) return message.channel.send(`У тебя ${message.author} нету прав на использование этой команды`)
+            if(!message.member.permissions.has("KICKEMBERS")) return message.channel.send(`У тебя ${message.author} нету прав на использование этой команды`)
             const user = message.mentions.users.first() || message.guild.users.cache.get(args[0])
             const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
             var content = message.content.split(" ").slice(2).join(' ');
