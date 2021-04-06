@@ -10,7 +10,7 @@ module.exports = {
         var member= message.mentions.members.first();
         const pics = slaped[Math.floor(Math.random() * slaped.length)];
         const picshug = hug[Math.floor(Math.random() * hug.length)];
-        if(!member) return message.channel.send(`${message.author} не бейте всех на єтом сервере есть и хорошие люди`)
+        if(!member) return message.channel.send(`${message.author} не бейте всех на этом сервере есть и хорошие люди`)
         let slapEmbed2 = new Discord.MessageEmbed()
           .setDescription(`${message.author} у тебя все нормально? Иди сюда я тебя обниму`)
           .setColor("#343638")
