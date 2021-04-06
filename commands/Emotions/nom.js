@@ -17,6 +17,7 @@ module.exports = {
         let nomEmbed2 = new Discord.MessageEmbed()
           .setTitle('Реакция покормил:')
           .setDescription(`${message.author} покушал(-а) в одиночестве`)
+          .setImage(pics)
           .setColor("#343638")
             if(member.id === message.author.id) return message.channel.send(nomEmbed2);
          let nomEmbed3 = new Discord.MessageEmbed()
